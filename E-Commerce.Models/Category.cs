@@ -14,7 +14,7 @@ namespace E_Commerce.Models
         public string Name { get; set; }
 
         [DisplayName("Display Order")]
-        [Range(1,100,ErrorMessage ="Display Order must be Between 1-10")]
+        [Range(1, 100, ErrorMessage = "Display Order must be Between 1-10")]
         public int DisplayOrder { get; set; }
     }
 }

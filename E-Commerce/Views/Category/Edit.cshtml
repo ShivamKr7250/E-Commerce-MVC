@@ -2,17 +2,14 @@
 
 <div class="card shadow border-0 mt-4">
     <div class="card-header bg-secondary bg-gradient ml-0 py-3">
-        <div class="row">
-            <h2 class="text-primary py-2">Edit Category</h2>
+        <div class="row text-center">
+            <h2 class="text-primary py-2 ">Edit Category</h2>
         </div>
     </div>
     <div class="card-body p-4">
         <form method="post">
             <input asp-for="Id" hidden />
             <div class="border p-3 mt-4">
-                <div class="row pb-2">
-                    <h2 class="text-primary">Edit Category</h2>
-                </div>
                 @*<div asp-validation-summary="ModelOnly"></div>*@
                 <div class="mb-3 row p-1">
                     <label asp-for="Name" class="p-0"></label>
