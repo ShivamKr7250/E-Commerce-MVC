@@ -60,7 +60,7 @@ namespace E_Commerce.Areas.Admin.Controllers
             }
             else
             {
-                return View(companyObj;
+                return View(companyObj);
             }
         }
 

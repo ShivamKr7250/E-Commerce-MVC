@@ -30,6 +30,12 @@ namespace E_Commerce.DataAccess.Data
                 new Category { Id = 3, Name = "History", DisplayOrder = 3 }
                 );
 
+            modelBuilder.Entity<Company>().HasData(
+                new Company { Id = 1, Name = "SupShiv IT Solution", StreetAddress="Danapur, Khagual", City="Patna", State="Bihar", PostalCode=801105, PhoneNumber="+91-9304961453"},
+                new Company { Id = 2, Name = "RF Solutions", StreetAddress = "Dum Dum, Kolata", City = "Kolkata", State = "West Bengal", PostalCode = 700001, PhoneNumber = "+91-9955983347" },
+                new Company { Id = 3, Name = "S.K IT Master", StreetAddress = "Amara, Arwal", City = "Arwal", State = "Bihar", PostalCode = 8034505, PhoneNumber = "+91-7250694584" }
+                );
+
 
             modelBuilder.Entity<Product>().HasData(
                 new Product
