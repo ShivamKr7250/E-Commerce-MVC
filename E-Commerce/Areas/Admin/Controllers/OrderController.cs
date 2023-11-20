@@ -140,14 +140,10 @@ namespace E_Commerce.Areas.Admin.Controllers
             var domain = "https://localhost:7281/";
             var options = new SessionCreateOptions
             {
-                PaymentMethodTypes = new List<string>
-                {
-                  "card",
-                },
+                SuccessUrl = domain + $"admin/order/PaymentConfirmation?orderHeaderId={OrderVM.OrderHeader.Id}",
+                CancelUrl = domain + $"admin/order/details?orderId={OrderVM.OrderHeader.Id}",
                 LineItems = new List<SessionLineItemOptions>(),
                 Mode = "payment",
-                SuccessUrl = domain + $"admin/order/PaymentConfirmation?orderHeaderId={OrderVM.OrderHeader.Id}",
-                CancelUrl = domain + $"admin/order/index",
             };
 
             foreach (var item in ShoppingCartVM.ShoppingCartList)
