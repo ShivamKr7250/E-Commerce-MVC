@@ -81,15 +81,15 @@ namespace E_Commerce.Areas.Customer.Controllers
 			ShoppingCartVM.OrderHeader.OrderDate = System.DateTime.Now;
 			ShoppingCartVM.OrderHeader.ApplicationUserId = userId;
 
-			ApplicationUser applicationUser = _unitOfWork.ApplicationUser.Get(u => u.Id == userId);
-
 			foreach (var cart in ShoppingCartVM.ShoppingCartList)
 			{
 				cart.Price = GetPriceBasedOnQuantity(cart);
 				ShoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
 			}
 
-			if (applicationUser.CompanyId.GetValueOrDefault() == 0)
+            ApplicationUser applicationUser = _unitOfWork.ApplicationUser.Get(u => u.Id == userId);
+
+            if (applicationUser.CompanyId.GetValueOrDefault() == 0)
 			{
 				//it is a regular customer
 				ShoppingCartVM.OrderHeader.PaymentStatus = SD.PaymentStatusPending;
@@ -122,15 +122,19 @@ namespace E_Commerce.Areas.Customer.Controllers
 				//it is a regular customer account and we ned to capture payment
 				//strip logic
 				var domain = "https://localhost:7281/";
-				var options = new SessionCreateOptions
-				{
-					SuccessUrl = domain+ $"customer/cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
-					CancelUrl = domain+ "customer/cart/index",
-					LineItems = new List<SessionLineItemOptions>(),
-					Mode = "payment",
-				};
+                var options = new SessionCreateOptions
+                {
+                    PaymentMethodTypes = new List<string>
+                {
+                  "card",
+                },
+                    LineItems = new List<SessionLineItemOptions>(),
+                    Mode = "payment",
+                    SuccessUrl = domain + $"customer/cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
+                    CancelUrl = domain + $"customer/cart/index",
+                };
 
-				foreach (var item in ShoppingCartVM.ShoppingCartList)
+                foreach (var item in ShoppingCartVM.ShoppingCartList)
 				{
 					var sessionLineItem = new SessionLineItemOptions
 					{
@@ -157,8 +161,11 @@ namespace E_Commerce.Areas.Customer.Controllers
 
 			}
 
-			return RedirectToAction(nameof(OrderConfirmation), new { id = ShoppingCartVM.OrderHeader.Id });
-		}
+            else
+            {
+                return RedirectToAction("OrderConfirmation", "Cart", new { id = ShoppingCartVM.OrderHeader.Id });
+            }
+        }
 
 		public IActionResult OrderConfirmation(int id)
 		{
@@ -171,10 +178,10 @@ namespace E_Commerce.Areas.Customer.Controllers
 
 				if(session.PaymentStatus.ToLower() == "paid")
 				{
-					_unitOfWork.OrderHeader.UpdateStripePaymentID(id, session.Id, session.PaymentIntentId);
-					_unitOfWork.OrderHeader.UpdateStatus(id, SD.StatusApproved, SD.PaymentStatusApproved);
-					_unitOfWork.Save();
-				}
+                    _unitOfWork.OrderHeader.UpdateStripePaymentID(id, orderHeader.SessionId, session.PaymentIntentId);
+                    _unitOfWork.OrderHeader.UpdateStatus(id, SD.StatusApproved, SD.PaymentStatusApproved);
+                    _unitOfWork.Save();
+                }
 			}
 
 			List<ShoppingCart> shoppingCarts = _unitOfWork.ShoppingCart
