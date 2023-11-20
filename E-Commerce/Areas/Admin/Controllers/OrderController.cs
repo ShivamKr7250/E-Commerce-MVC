@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Operations;
 using Stripe;
+using Stripe.Checkout;
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -127,6 +128,53 @@ namespace E_Commerce.Areas.Admin.Controllers
             TempData["success"] = "Order Cancelled Successfully.";
             return RedirectToAction("Details", "Order", new { orderId = OrderVM.OrderHeader.Id });
         }
+
+        [ActionName("Details")]
+        [HttpPost]
+        public IActionResult Details_PAY_NOW()
+        {
+            OrderVM.OrderHeader = _unitOfWork.OrderHeader.Get(u => u.Id == OrderVM.OrderHeader.Id, includeProperties: "ApplicationUser");
+            OrderVM.OrderDetail = _unitOfWork.OrderDetail.GetAll(u => u.OrderHeaderId == OrderVM.OrderHeader.Id, includeProperties: "Product");
+
+            //Stripe Logic
+            var domain = "https://localhost:7281/";
+            var options = new SessionCreateOptions
+            {
+                PaymentMethodTypes = new List<string>
+                {
+                  "card",
+                },
+                LineItems = new List<SessionLineItemOptions>(),
+                Mode = "payment",
+                SuccessUrl = domain + $"admin/order/PaymentConfirmation?orderHeaderId={OrderVM.OrderHeader.Id}",
+                CancelUrl = domain + $"admin/order/index",
+            };
+
+            foreach (var item in ShoppingCartVM.ShoppingCartList)
+            {
+                var sessionLineItem = new SessionLineItemOptions
+                {
+                    PriceData = new SessionLineItemPriceDataOptions
+                    {
+                        UnitAmount = (long)(item.Price * 100), //$20.50 => 2050
+                        Currency = "inr",
+                        ProductData = new SessionLineItemPriceDataProductDataOptions
+                        {
+                            Name = item.Product.Title
+                        }
+                    },
+                    Quantity = item.Count
+                };
+                options.LineItems.Add(sessionLineItem);
+            }
+
+            var service = new SessionService();
+            Session session = service.Create(options);
+            _unitOfWork.OrderHeader.UpdateStripePaymentID(ShoppingCartVM.OrderHeader.Id, session.Id, session.PaymentIntentId);
+            _unitOfWork.Save();
+            Response.Headers.Add("Location", session.Url);
+        }
+
 
             #region API CALLS
             [HttpGet]
