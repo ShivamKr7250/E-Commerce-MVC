@@ -146,7 +146,7 @@ namespace E_Commerce.Areas.Admin.Controllers
                 Mode = "payment",
             };
 
-            foreach (var item in ShoppingCartVM.ShoppingCartList)
+            foreach (var item in OrderVM.OrderDetail)
             {
                 var sessionLineItem = new SessionLineItemOptions
                 {
@@ -166,14 +166,35 @@ namespace E_Commerce.Areas.Admin.Controllers
 
             var service = new SessionService();
             Session session = service.Create(options);
-            _unitOfWork.OrderHeader.UpdateStripePaymentID(ShoppingCartVM.OrderHeader.Id, session.Id, session.PaymentIntentId);
+            _unitOfWork.OrderHeader.UpdateStripePaymentID(OrderVM.OrderHeader.Id, session.Id, session.PaymentIntentId);
             _unitOfWork.Save();
             Response.Headers.Add("Location", session.Url);
+            return new StatusCodeResult(303);
+        }
+
+        public IActionResult PaymentConfirmation(int orderHeaderId)
+        {
+            OrderHeader orderHeader = _unitOfWork.OrderHeader.Get(u => u.Id == orderHeaderId);
+            if (orderHeader.PaymentStatus == SD.PaymentStatusDelayedPayment)
+            {
+                //this is an order by a company
+                var service = new SessionService();
+                Session session = service.Get(orderHeader.SessionId);
+
+                if (session.PaymentStatus.ToLower() == "paid")
+                {
+                    _unitOfWork.OrderHeader.UpdateStripePaymentID(orderHeaderId, orderHeader.SessionId, session.PaymentIntentId);
+                    _unitOfWork.OrderHeader.UpdateStatus(orderHeaderId, orderHeader.OrderStatus ,SD.PaymentStatusApproved);
+                    _unitOfWork.Save();
+                }
+            }
+
+            return View(orderHeaderId);
         }
 
 
-            #region API CALLS
-            [HttpGet]
+        #region API CALLS
+        [HttpGet]
 		public IActionResult GetAll(string status)
 		{
             IEnumerable<OrderHeader> objOrderHeaders; 
