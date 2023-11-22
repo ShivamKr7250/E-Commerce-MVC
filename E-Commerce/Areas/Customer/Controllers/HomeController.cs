@@ -2,7 +2,6 @@ using E_Commerce.DataAccess.Repository.IRepository;
 using E_Commerce.Models;
 using E_Commerce.Utility;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
