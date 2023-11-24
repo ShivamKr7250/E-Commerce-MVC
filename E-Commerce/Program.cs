@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using E_Commerce.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Stripe;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,12 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = $"/Identity/Account/Logout";
     options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
 
+});
+
+builder.Services.AddAuthentication().AddFacebook(option =>
+{
+    option.AppId = "1577059806363085";
+    option.AppSecret = "6bad59a318964867a9859c050f55aa20";
 });
 
 builder.Services.AddDistributedMemoryCache();
