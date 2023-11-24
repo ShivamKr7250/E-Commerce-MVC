@@ -200,7 +200,7 @@ namespace E_Commerce.Areas.Customer.Controllers
 
 		public IActionResult Minus(int cartId)
 		{
-			var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId);
+			var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked:true);
 			if (cartFromDb.Count < 1)
 			{
 				//remove that from cart
@@ -219,7 +219,7 @@ namespace E_Commerce.Areas.Customer.Controllers
 
 		public IActionResult Remove(int cartId)
 		{
-			var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId);
+			var cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.Id == cartId, tracked: true);
 			//remove that from cart
 			_unitOfWork.ShoppingCart.Remove(cartFromDb);
 
