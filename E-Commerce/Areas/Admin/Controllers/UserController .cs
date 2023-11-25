@@ -33,12 +33,17 @@ namespace E_Commerce.Areas.Admin.Controllers
         public IActionResult GetAll()
         {
             List<ApplicationUser> objUserList = _db.ApplicationUsers.Include(u => u.Company).ToList();
+            var userRoles = _db.UserRoles.ToList();
+            var roles = _db.Roles.ToList();
 
             foreach (var user in objUserList)
             {
+                var roleId = userRoles.FirstOrDefault(u => u.UserId == user.Id).RoleId;
+                user.Role = roles.FirstOrDefault(u => u.Id == roleId).Name;
+
                 if(user.Company == null)
                 {
-                    user.Company = new() { Name = "" };
+                    user.Company = new Company() { Name = "" };
                 }
             }
             return Json(new {data = objUserList });
