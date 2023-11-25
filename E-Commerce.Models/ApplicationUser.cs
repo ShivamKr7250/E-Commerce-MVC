@@ -24,6 +24,6 @@ namespace E_Commerce.Models
 
         [ForeignKey("CompanyId")]
         [ValidateNever]
-        public Company Company { get; set; }
+        public Company? Company { get; set; }
     }
 }
