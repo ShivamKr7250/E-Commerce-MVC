@@ -1,11 +1,6 @@
 ﻿using E_Commerce.DataAccess.Data;
 using E_Commerce.DataAccess.Repository.IRepository;
 using E_Commerce.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace E_Commerce.DataAccess.Repository
 {
@@ -31,10 +26,7 @@ namespace E_Commerce.DataAccess.Repository
                 objFromDb.Price100 = obj.Price100;
                 objFromDb.CategoryId = obj.CategoryId;
                 objFromDb.Author = obj.Author;
-                //if(obj.ImageUrl != null)
-                //{
-                //    objFromDb.ImageUrl = obj.ImageUrl;
-                //}
+                objFromDb.ProductImages = obj.ProductImages;
             }
         }
     }
