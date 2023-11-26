@@ -89,6 +89,9 @@
                         {
                             <div class="border p-1 m-2 text-center">
                                 <img src="@image.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" />
+                                <a asp-action="DeleteImage" class="btn btn-danger" asp-route-imageId="@image.Id">
+                                     <i class="bi bi-trash-fill"></i> Delete
+                                </a>
                                 </div>
                         }
                     }
@@ -107,7 +110,7 @@
     <script>
         tinymce.init({
             selector: 'textarea',
-            plugins: 'mentions anchor autolink charmap emoticons lists table visualblocks wordcount checklist mediaembed casechange export pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+            plugins: '',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough| align lineheight | tinycomments | checklist numlist bullist indent outdent',
         });
     </script>
