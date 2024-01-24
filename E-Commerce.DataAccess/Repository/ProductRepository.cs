@@ -1,8 +1,8 @@
-﻿using E_Commerce.DataAccess.Data;
-using E_Commerce.DataAccess.Repository.IRepository;
-using E_Commerce.Models;
+﻿using MaaMobile.DataAccess.Data;
+using MaaMobile.DataAccess.Repository.IRepository;
+using MaaMobile.Models;
 
-namespace E_Commerce.DataAccess.Repository
+namespace MaaMobile.DataAccess.Repository
 {
     public class ProductRepository : Repository<Product>, IProductRepository
     {

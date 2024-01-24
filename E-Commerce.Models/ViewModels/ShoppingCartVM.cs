@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Models.ViewModels
+namespace MaaMobile.Models.ViewModels
 {
     public class ShoppingCartVM
     {

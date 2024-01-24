@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>E_Commerce.DataAccess</RootNamespace>
+    <RootNamespace>MaaMobile.DataAccess</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -24,8 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\E-Commerce.Models\E-Commerce.Models.csproj" />
-    <ProjectReference Include="..\E-Commerce.Utility\E-Commerce.Utility.csproj" />
+    <ProjectReference Include="..\E-Commerce.Models\MaaMobile.Models.csproj" />
+    <ProjectReference Include="..\E-Commerce.Utility\MaaMobile.Utility.csproj" />
   </ItemGroup>
 
 </Project>

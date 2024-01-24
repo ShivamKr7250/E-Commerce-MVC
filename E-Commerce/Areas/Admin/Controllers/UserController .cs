@@ -1,15 +1,15 @@
-﻿using E_Commerce.DataAccess.Data;
-using E_Commerce.DataAccess.Repository.IRepository;
-using E_Commerce.Models;
-using E_Commerce.Models.ViewModels;
-using E_Commerce.Utility;
+﻿using MaaMobile.DataAccess.Data;
+using MaaMobile.DataAccess.Repository.IRepository;
+using MaaMobile.Models;
+using MaaMobile.Models.ViewModels;
+using MaaMobile.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace E_Commerce.Areas.Admin.Controllers
+namespace MaaMobile.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = SD.Role_Admin)]

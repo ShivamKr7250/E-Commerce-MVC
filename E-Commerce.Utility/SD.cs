@@ -1,4 +1,4 @@
-﻿namespace E_Commerce.Utility
+﻿namespace MaaMobile.Utility
 {
     public static class SD
     {

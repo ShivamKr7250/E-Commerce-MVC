@@ -1,10 +1,10 @@
-﻿using E_Commerce.DataAccess.Data;
-using E_Commerce.Models;
-using E_Commerce.Utility;
+﻿using MaaMobile.DataAccess.Data;
+using MaaMobile.Models;
+using MaaMobile.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace E_Commerce.DataAccess.DbIinitializer
+namespace MaaMobile.DataAccess.DbIinitializer
 {
     public class DbInitializer : IDbInitializer
     {

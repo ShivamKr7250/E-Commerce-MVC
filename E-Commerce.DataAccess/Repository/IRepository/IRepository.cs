@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.DataAccess.Repository.IRepository
+namespace MaaMobile.DataAccess.Repository.IRepository
 {
     public interface IRepository<T> where T : class
     {

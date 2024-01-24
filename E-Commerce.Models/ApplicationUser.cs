@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Models
+namespace MaaMobile.Models
 {
     public class ApplicationUser : IdentityUser
     {

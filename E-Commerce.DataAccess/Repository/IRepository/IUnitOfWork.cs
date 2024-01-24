@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.DataAccess.Repository.IRepository
+namespace MaaMobile.DataAccess.Repository.IRepository
 {
     public interface IUnitOfWork
     {

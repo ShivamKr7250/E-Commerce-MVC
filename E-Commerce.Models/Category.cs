@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace E_Commerce.Models
+namespace MaaMobile.Models
 {
     public class Category
     {

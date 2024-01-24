@@ -1,9 +1,9 @@
-﻿using E_Commerce.DataAccess.Repository.IRepository;
-using E_Commerce.Utility;
+﻿using MaaMobile.DataAccess.Repository.IRepository;
+using MaaMobile.Utility;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace E_Commerce.ViewComponents
+namespace MaaMobile.ViewComponents
 {
     public class ShoppingCartViewComponent : ViewComponent
     {

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace E_Commerce.Areas.Identity.Pages.Account.Manage
+namespace MaaMobile.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {

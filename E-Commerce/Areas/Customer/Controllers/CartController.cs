@@ -1,13 +1,13 @@
-﻿using E_Commerce.DataAccess.Repository.IRepository;
-using E_Commerce.Models;
-using E_Commerce.Models.ViewModels;
-using E_Commerce.Utility;
+﻿using MaaMobile.DataAccess.Repository.IRepository;
+using MaaMobile.Models;
+using MaaMobile.Models.ViewModels;
+using MaaMobile.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe.Checkout;
 using System.Security.Claims;
 
-namespace E_Commerce.Areas.Customer.Controllers
+namespace MaaMobile.Areas.Customer.Controllers
 {
 	[Area("Customer")]
 	[Authorize]

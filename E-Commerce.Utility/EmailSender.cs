@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce.Utility
+namespace MaaMobile.Utility
 {
     public class EmailSender : IEmailSender
     {
