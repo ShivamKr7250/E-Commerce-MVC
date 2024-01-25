@@ -1,8 +1,10 @@
 ﻿using MaaMobile.DataAccess.Data;
 using MaaMobile.DataAccess.Repository.IRepository;
 using MaaMobile.Models;
+using MaaMobile.Models.ViewModels;
 using MaaMobile.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MaaMobile.Areas.Admin.Controllers
@@ -12,10 +14,12 @@ namespace MaaMobile.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CategoryController(IUnitOfWork db)
+        public CategoryController(IWebHostEnvironment webHostEnvironment,IUnitOfWork db)
         {
             _unitOfWork = db;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -23,63 +27,73 @@ namespace MaaMobile.Areas.Admin.Controllers
             return View(objCategoryList);
         }
 
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
-            return View();
+            CategoryVM categoryVM = new()
+            {
+                Category = new Category()
+            };
+
+            if (id == null || id == 0)
+            {
+                //Create
+                return View(categoryVM);
+            }
+            else
+            {
+                //Update
+                categoryVM.Category = _unitOfWork.Category.Get(u => u.Id == id);
+                return View(categoryVM);
+            }
         }
 
         [HttpPost]
-        public IActionResult Create(Category obj)
+        public IActionResult Upsert(CategoryVM categoryVM, IFormFile? file)
         {
-            if (obj.Name == obj.DisplayOrder.ToString())
-            {
-                ModelState.AddModelError("name", "The Display Order cannot exactly match the Name.");
-            }
-            //  if (obj.Name.ToLower() == "test")
-            //{
-            //  ModelState.AddModelError("", "Test is an Invalid Value");
-            //}
             if (ModelState.IsValid)
             {
-                _unitOfWork.Category.Add(obj);
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productPath = Path.Combine(wwwRootPath, @"images\category\");
+
+                    if (!string.IsNullOrEmpty(categoryVM.Category.ImageUrl))
+                    {
+                        //delete th old Image
+                        var oldImagePath = Path.Combine(wwwRootPath, categoryVM.Category.ImageUrl.TrimStart('\\'));
+
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
+
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+
+                    categoryVM.Category.ImageUrl = @"\images\category\" + fileName;
+                }
+
+                if (categoryVM.Category.Id == 0)
+                {
+                    _unitOfWork.Category.Add(categoryVM.Category);
+                }
+                else
+                {
+                    _unitOfWork.Category.Update(categoryVM.Category);
+                }
                 _unitOfWork.Save();
                 TempData["success"] = "Category Created Successfully";
                 return RedirectToAction("Index", "Category");
             }
-            return View();
-
-        }
-
-        public IActionResult Edit(int? id)
-        {
-            if (id == null || id == 0)
+            else
             {
-                return NotFound();
+                return View(categoryVM);
             }
-            //Multiple Ways to Retrieve Data and Edit 
-
-            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id); //Find work only on primary key
-                                                                                  // Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u=>u.Id==id);
-                                                                                  // Category? categoryFromDb2 = _db.Categories.Where(u=>u.Id==id).FirstOrDefault();
-            if (categoryFromDb == null)
-            {
-                return NotFound();
-            }
-            return View(categoryFromDb);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(Category obj)
-        {
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.Category.Update(obj);
-                _unitOfWork.Save();
-                TempData["success"] = "Category Updated Successfully";
-                return RedirectToAction("Index", "Category");
-            }
-            return View();
-
         }
 
         public IActionResult Delete(int? id)

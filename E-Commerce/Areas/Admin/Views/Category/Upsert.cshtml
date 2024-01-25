@@ -1,0 +1,67 @@
+﻿@model CategoryVM
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row text-center">
+            <h2 class="text-primary py-2"> @(Model.Category.Id!=0?"Update":"Create") Category</h2>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Category.Id" hidden />
+            <input asp-for="Category.ImageUrl" hidden />
+            <div class="row">
+                <div class="col-10">
+                    <div class="border p-3">
+                        @*<div asp-validation-summary="ModelOnly"></div>*@
+                        <div class="mb-3 row">
+                            <label asp-for="Category.Name" class="p-1"></label>
+                            <input asp-for="Category.Name" class="form-control border-0 shadow" />
+                            <span asp-validation-for="Category.Name" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 row">
+                            <label asp-for="Category.DisplayOrder" class="p-1"></label>
+                            <input asp-for="Category.DisplayOrder" class="form-control border-0 shadow" />
+                            <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3 row">
+                            <label asp-for="Category.ImageUrl" class="p-1 text-muted"></label>
+                            <input type="file" name="file" asp-for="Category.ImageUrl" class="form-control border-0 shadow" />
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-md-3">
+                                @if (Model.Category.Id != 0)
+                                {
+                                    <button type="submit" class="btn btn-primary form-control">Update</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-primary form-control">Create</button>
+                                }
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary border form-control">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <img src="@Model.Category.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9"
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
