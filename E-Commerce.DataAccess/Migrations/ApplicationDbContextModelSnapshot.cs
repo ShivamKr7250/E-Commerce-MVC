@@ -244,23 +244,27 @@ namespace MaaMobile.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Author")
+                    b.Property<string>("Brand")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("CompatiableModel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ISBN")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("ListPrice")
                         .HasColumnType("float");
+
+                    b.Property<string>("ModelName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
@@ -270,10 +274,6 @@ namespace MaaMobile.DataAccess.Migrations
 
                     b.Property<double>("Price50")
                         .HasColumnType("float");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -285,28 +285,28 @@ namespace MaaMobile.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            Author = "Abby Muscles",
+                            Brand = "Abby Muscles",
                             CategoryId = 2,
+                            CompatiableModel = "WS3333333301",
                             Description = "Praesent vitae sodals libero",
-                            ISBN = "WS3333333301",
                             ListPrice = 70.0,
+                            ModelName = "Cotton Candy",
                             Price = 65.0,
                             Price100 = 55.0,
-                            Price50 = 60.0,
-                            Title = "Cotton Candy"
+                            Price50 = 60.0
                         },
                         new
                         {
                             Id = 2,
-                            Author = "Ron Parker",
+                            Brand = "Ron Parker",
                             CategoryId = 1,
+                            CompatiableModel = "SOTJ111111101",
                             Description = "Praesent vitae sodals libero",
-                            ISBN = "SOTJ111111101",
                             ListPrice = 30.0,
+                            ModelName = "Rock in the Ocean",
                             Price = 27.0,
                             Price100 = 20.0,
-                            Price50 = 25.0,
-                            Title = "Rock in the Ocean"
+                            Price50 = 25.0
                         });
                 });
 

@@ -143,7 +143,7 @@ namespace MaaMobile.Areas.Customer.Controllers
 							Currency = "inr",
 							ProductData = new SessionLineItemPriceDataProductDataOptions
 							{
-								Name = item.Product.Title
+								Name = item.Product.ModelName
 							}
 						},
 						Quantity = item.Count

@@ -11,15 +11,15 @@ namespace MaaMobile.Models
         public int Id { get; set; }
 
         [Required]
-        public string Title { get; set; }
+        public string ModelName { get; set; }
 
+        public string Brand { get; set; }
+
+        [Required]
+        public string CompatiableModel { get; set; }
+
+        [Required]
         public string Description { get; set; }
-
-        [Required]
-        public string ISBN { get; set; }
-
-        [Required]
-        public string Author { get; set; }
 
         [Required]
         [Display (Name = "List Price")]

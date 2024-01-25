@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MaaMobile.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class initalDB : Migration
+    public partial class updatedb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -86,10 +86,10 @@ namespace MaaMobile.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ModelName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CompatiableModel = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ISBN = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Author = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ListPrice = table.Column<double>(type: "float", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Price50 = table.Column<double>(type: "float", nullable: false),
@@ -362,11 +362,11 @@ namespace MaaMobile.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "Author", "CategoryId", "Description", "ISBN", "ListPrice", "Price", "Price100", "Price50", "Title" },
+                columns: new[] { "Id", "Brand", "CategoryId", "CompatiableModel", "Description", "ListPrice", "ModelName", "Price", "Price100", "Price50" },
                 values: new object[,]
                 {
-                    { 1, "Abby Muscles", 2, "Praesent vitae sodals libero", "WS3333333301", 70.0, 65.0, 55.0, 60.0, "Cotton Candy" },
-                    { 2, "Ron Parker", 1, "Praesent vitae sodals libero", "SOTJ111111101", 30.0, 27.0, 20.0, 25.0, "Rock in the Ocean" }
+                    { 1, "Abby Muscles", 2, "WS3333333301", "Praesent vitae sodals libero", 70.0, "Cotton Candy", 65.0, 55.0, 60.0 },
+                    { 2, "Ron Parker", 1, "SOTJ111111101", "Praesent vitae sodals libero", 30.0, "Rock in the Ocean", 27.0, 20.0, 25.0 }
                 });
 
             migrationBuilder.CreateIndex(

@@ -42,10 +42,10 @@ namespace MaaMobile.DataAccess.Data
                 new Product
                 {
                     Id = 1,
-                    Title = "Cotton Candy",
-                    Author = "Abby Muscles",
+                    ModelName = "Cotton Candy",
+                    Brand = "Abby Muscles",
                     Description = "Praesent vitae sodals libero",
-                    ISBN = "WS3333333301",
+                    CompatiableModel = "WS3333333301",
                     ListPrice = 70,
                     Price = 65,
                     Price50 = 60,
@@ -55,10 +55,10 @@ namespace MaaMobile.DataAccess.Data
                 new Product
                 {
                     Id = 2,
-                    Title = "Rock in the Ocean",
-                    Author = "Ron Parker",
+                    ModelName = "Rock in the Ocean",
+                    Brand = "Ron Parker",
                     Description = "Praesent vitae sodals libero",
-                    ISBN = "SOTJ111111101",
+                    CompatiableModel = "SOTJ111111101",
                     ListPrice = 30,
                     Price = 27,
                     Price50 = 25,
