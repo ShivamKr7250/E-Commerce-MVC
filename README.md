@@ -63,10 +63,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+$HIVAM KUMAR - [@linkedin](https://twitter.com/your_twitter) - supshiv7250@gmail.com
 
-Project Link: [https://github.com/your_username_/E-Book-Shopping-Website](https://github.com/your_username_/E-Book-Shopping-Website)
+Project Link: [GitHub](https://www.linkedin.com/in/shivamkrdotnet/)
 
----
-
-Ensure to replace placeholders with your actual data. This README provides a basic outline tailored for an ASP.NET Core MVC project. Adjustments might be needed based on the specific requirements and configurations of your project.
