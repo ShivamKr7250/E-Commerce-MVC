@@ -1,4 +1,4 @@
-📚 E-Book Shopping Website (ASP.NET Core MVC)
+# E-Book Shopping Website (ASP.NET Core MVC)
 
 Welcome to the GitHub repository for the E-Book Shopping Website project built with ASP.NET Core MVC! This project is a web-based application designed for users to browse, search, and purchase e-books online effortlessly. Our platform aims to deliver a smooth and user-friendly shopping experience, featuring an extensive collection of e-books across various genres.
 
