@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaaMobile.Models.ViewModels
+namespace E_Commerce.Models.ViewModels
 {
     public class RoleManagmentVM
     {

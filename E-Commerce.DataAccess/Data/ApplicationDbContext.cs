@@ -1,9 +1,9 @@
-﻿using MaaMobile.Models;
+﻿using E_Commerce.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace MaaMobile.DataAccess.Data
+namespace E_Commerce.DataAccess.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -26,9 +26,9 @@ namespace MaaMobile.DataAccess.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, Name = "Action", DisplayOrder = 1, ImageUrl=""},
-                new Category { Id = 2, Name = "SciFi", DisplayOrder = 2, ImageUrl="" },
-                new Category { Id = 3, Name = "History", DisplayOrder = 3, ImageUrl="" }
+                new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
+                new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
+                new Category { Id = 3, Name = "History", DisplayOrder = 3 }
                 );
 
             modelBuilder.Entity<Company>().HasData(
@@ -42,28 +42,28 @@ namespace MaaMobile.DataAccess.Data
                 new Product
                 {
                     Id = 1,
-                    ModelName = "Cotton Candy",
-                    Brand = "Abby Muscles",
+                    Title = "Cotton Candy",
+                    Author = "Abby Muscles",
                     Description = "Praesent vitae sodals libero",
-                    CompatiableModel = "WS3333333301",
+                    ISBN = "WS3333333301",
                     ListPrice = 70,
                     Price = 65,
                     Price50 = 60,
                     Price100 = 55,
-                    CategoryId = 2
+                    CategoryId = 8
                 },
                 new Product
                 {
                     Id = 2,
-                    ModelName = "Rock in the Ocean",
-                    Brand = "Ron Parker",
+                    Title = "Rock in the Ocean",
+                    Author = "Ron Parker",
                     Description = "Praesent vitae sodals libero",
-                    CompatiableModel = "SOTJ111111101",
+                    ISBN = "SOTJ111111101",
                     ListPrice = 30,
                     Price = 27,
                     Price50 = 25,
                     Price100 = 20,
-                    CategoryId = 1
+                    CategoryId = 9
                 }
                 );
         }

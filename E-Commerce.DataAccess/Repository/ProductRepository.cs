@@ -1,8 +1,8 @@
-﻿using MaaMobile.DataAccess.Data;
-using MaaMobile.DataAccess.Repository.IRepository;
-using MaaMobile.Models;
+﻿using E_Commerce.DataAccess.Data;
+using E_Commerce.DataAccess.Repository.IRepository;
+using E_Commerce.Models;
 
-namespace MaaMobile.DataAccess.Repository
+namespace E_Commerce.DataAccess.Repository
 {
     public class ProductRepository : Repository<Product>, IProductRepository
     {
@@ -17,15 +17,15 @@ namespace MaaMobile.DataAccess.Repository
            var objFromDb = _db.Products.FirstOrDefault(u=> u.Id == obj.Id);
             if (objFromDb != null)
             {
-                objFromDb.ModelName = obj.ModelName;
+                objFromDb.Title = obj.Title;
                 objFromDb.Description = obj.Description;
-                objFromDb.Brand = obj.Brand;
+                objFromDb.ISBN = obj.ISBN;
                 objFromDb.ListPrice = obj.ListPrice;
                 objFromDb.Price = obj.Price;
                 objFromDb.Price50 = obj.Price50;
                 objFromDb.Price100 = obj.Price100;
                 objFromDb.CategoryId = obj.CategoryId;
-                objFromDb.CompatiableModel = obj.CompatiableModel;
+                objFromDb.Author = obj.Author;
                 objFromDb.ProductImages = obj.ProductImages;
             }
         }

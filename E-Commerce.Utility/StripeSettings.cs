@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaaMobile.Utility
+namespace E_Commerce.Utility
 {
 	public class StripeSettings
 	{

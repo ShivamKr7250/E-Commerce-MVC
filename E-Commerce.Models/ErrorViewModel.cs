@@ -1,4 +1,4 @@
-namespace MaaMobile.Models
+namespace E_Commerce.Models
 {
     public class ErrorViewModel
     {

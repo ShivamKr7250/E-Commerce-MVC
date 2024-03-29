@@ -1,12 +1,12 @@
-﻿using MaaMobile.DataAccess.Data;
-using MaaMobile.DataAccess.Repository.IRepository;
+﻿using E_Commerce.DataAccess.Data;
+using E_Commerce.DataAccess.Repository.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaaMobile.DataAccess.Repository
+namespace E_Commerce.DataAccess.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {

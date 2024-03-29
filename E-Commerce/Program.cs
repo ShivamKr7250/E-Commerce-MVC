@@ -1,13 +1,13 @@
-using MaaMobile.DataAccess.Data;
-using MaaMobile.DataAccess.Repository;
-using MaaMobile.DataAccess.Repository.IRepository;
+using E_Commerce.DataAccess.Data;
+using E_Commerce.DataAccess.Repository;
+using E_Commerce.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using MaaMobile.Utility;
+using E_Commerce.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Stripe;
 using Microsoft.Extensions.DependencyInjection;
-using MaaMobile.DataAccess.DbIinitializer;
+using E_Commerce.DataAccess.DbIinitializer;
 
 var builder = WebApplication.CreateBuilder(args);
 

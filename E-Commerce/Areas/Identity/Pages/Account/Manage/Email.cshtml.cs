@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace MaaMobile.Areas.Identity.Pages.Account.Manage
+namespace E_Commerce.Areas.Identity.Pages.Account.Manage
 {
     public class EmailModel : PageModel
     {

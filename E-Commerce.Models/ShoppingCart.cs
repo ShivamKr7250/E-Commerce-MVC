@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaaMobile.Models
+namespace E_Commerce.Models
 {
     public class ShoppingCart
     {

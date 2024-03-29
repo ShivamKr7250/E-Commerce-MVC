@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaaMobile.DataAccess.DbIinitializer
+namespace E_Commerce.DataAccess.DbIinitializer
 {
     public interface IDbInitializer
     {

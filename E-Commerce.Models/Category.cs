@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace MaaMobile.Models
+namespace E_Commerce.Models
 {
     public class Category
     {
@@ -16,7 +16,5 @@ namespace MaaMobile.Models
         [DisplayName("Display Order")]
         [Range(1, 100, ErrorMessage = "Display Order must be Between 1-10")]
         public int DisplayOrder { get; set; }
-
-        public string? ImageUrl { get; set; }
     }
 }

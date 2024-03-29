@@ -1,12 +1,12 @@
-using MaaMobile.DataAccess.Repository.IRepository;
-using MaaMobile.Models;
-using MaaMobile.Utility;
+using E_Commerce.DataAccess.Repository.IRepository;
+using E_Commerce.Models;
+using E_Commerce.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
 
-namespace MaaMobile.Areas.Customer.Controllers
+namespace E_Commerce.Areas.Customer.Controllers
 {
     [Area("Customer")]
     public class HomeController : Controller

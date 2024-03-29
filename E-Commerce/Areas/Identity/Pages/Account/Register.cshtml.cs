@@ -10,9 +10,9 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
-using MaaMobile.DataAccess.Repository.IRepository;
-using MaaMobile.Models;
-using MaaMobile.Utility;
+using E_Commerce.DataAccess.Repository.IRepository;
+using E_Commerce.Models;
+using E_Commerce.Utility;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -24,7 +24,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
-namespace MaaMobile.Areas.Identity.Pages.Account
+namespace E_Commerce.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {

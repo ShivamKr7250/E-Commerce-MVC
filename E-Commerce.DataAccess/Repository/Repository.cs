@@ -1,5 +1,5 @@
-﻿using MaaMobile.DataAccess.Data;
-using MaaMobile.DataAccess.Repository.IRepository;
+﻿using E_Commerce.DataAccess.Data;
+using E_Commerce.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaaMobile.DataAccess.Repository
+namespace E_Commerce.DataAccess.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {

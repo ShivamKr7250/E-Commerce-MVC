@@ -1,13 +1,13 @@
-﻿using MaaMobile.DataAccess.Repository.IRepository;
-using MaaMobile.Models;
-using MaaMobile.Models.ViewModels;
-using MaaMobile.Utility;
+﻿using E_Commerce.DataAccess.Repository.IRepository;
+using E_Commerce.Models;
+using E_Commerce.Models.ViewModels;
+using E_Commerce.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe.Checkout;
 using System.Security.Claims;
 
-namespace MaaMobile.Areas.Customer.Controllers
+namespace E_Commerce.Areas.Customer.Controllers
 {
 	[Area("Customer")]
 	[Authorize]
@@ -143,7 +143,7 @@ namespace MaaMobile.Areas.Customer.Controllers
 							Currency = "inr",
 							ProductData = new SessionLineItemPriceDataProductDataOptions
 							{
-								Name = item.Product.ModelName
+								Name = item.Product.Title
 							}
 						},
 						Quantity = item.Count
