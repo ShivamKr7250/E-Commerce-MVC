@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MaaMobile.DataAccess.Migrations
+namespace E_Commerce.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddingImageCol : Migration

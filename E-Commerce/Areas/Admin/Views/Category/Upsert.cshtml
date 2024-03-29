@@ -9,7 +9,6 @@
     <div class="card-body p-4">
         <form method="post" class="row" enctype="multipart/form-data">
             <input asp-for="Category.Id" hidden />
-            <input asp-for="Category.ImageUrl" hidden />
             <div class="row">
                 <div class="col-10">
                     <div class="border p-3">
@@ -23,10 +22,6 @@
                             <label asp-for="Category.DisplayOrder" class="p-1"></label>
                             <input asp-for="Category.DisplayOrder" class="form-control border-0 shadow" />
                             <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
-                        </div>
-                        <div class="mb-3 row">
-                            <label asp-for="Category.ImageUrl" class="p-1 text-muted"></label>
-                            <input type="file" name="file" asp-for="Category.ImageUrl" class="form-control border-0 shadow" />
                         </div>
                         <div class="row">
                             <div class="col-6 col-md-3">
@@ -46,9 +41,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-2">
-                    <img src="@Model.Category.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9"
                 </div>
 
             </div>
