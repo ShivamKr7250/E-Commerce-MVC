@@ -34,12 +34,12 @@ namespace E_Commerce.Areas.Admin.Controllers
 
             ProductVM productVM = new()
             {
-                CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
-                {
-                    Text = u.Name,
-                    Value = u.Id.ToString(),
-                }),
-                Product = new Product()
+                    CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+                    {
+                        Text = u.Name,
+                        Value = u.Id.ToString(),
+                    }),
+                    Product = new Product()
             };
             
             if(id == null || id == 0)
